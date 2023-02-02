@@ -1,6 +1,7 @@
 package com.muhammet;
 
 import com.muhammet.ornekcriteriakullanimi.CriteriaUsing;
+import com.muhammet.repository.MusteriRepository;
 import com.muhammet.repository.entity.ECinsiyet;
 import com.muhammet.repository.entity.Musteri;
 import com.muhammet.repository.entity.Urun;
@@ -31,7 +32,24 @@ public class EticaretApplication {
 //            System.out.println("****************************************");
 //        });
         //cr.usingParameter("Bahar");
-        cr.usingPredicate();
+        //cr.usingPredicate();
+        //cr.groupBy();
+        //cr.findAllNativeQuery();
+        //cr.namedQueryFindAll();
+        //cr.namedQueryFindByAd("m%");
+        //cr.namedQueryFindById(3l);
+        //cr.namedQueryFindById(1000l);
+        //cr.namedQueryGetCount();
+      //  cr.typedQuerySetProperties(1,3);
+        Musteri musteri = Musteri.builder()
+                .ad("Muhammet Ali")
+                .soyad("HOCA")
+                .adres("Ankara")
+                .cinsiyet(ECinsiyet.ERKEK)
+                .build();
+        MusteriRepository musteriRepository = new MusteriRepository();
+        musteriRepository.save(musteri);
+        musteriRepository.findAllByColumnNameAndValue("ad","Muhammet");
     }
 
     private static void criteriaList(){

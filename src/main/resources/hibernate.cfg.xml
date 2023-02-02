@@ -10,7 +10,7 @@
         <property name="hibernate.connection.username">postgres</property>
         <!--  Şifre      -->
         <property name="hibernate.connection.password">root</property>
-
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
         <!--  update -> Entity lerinize bakar eğer bunlara karşılık gelen tablolar DB de var ise
                         olduğu gibi bırakır. Eğer tablolar yok ise varlıklara ait tabloları oluşturur.
               create -> Entity lerinize ait tüm tabloları, uygulama her başladığında tekrar tekrar oluşturur.
