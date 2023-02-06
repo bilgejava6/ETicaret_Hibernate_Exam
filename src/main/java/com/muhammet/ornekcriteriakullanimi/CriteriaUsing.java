@@ -216,4 +216,11 @@ public class CriteriaUsing {
         });
 
     }
+
+    public void test(){
+        Musteri musteri = new Musteri();
+        musteri.getSoyad();
+
+    }
+
 }

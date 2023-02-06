@@ -5,6 +5,7 @@ import com.muhammet.repository.MusteriRepository;
 import com.muhammet.repository.entity.ECinsiyet;
 import com.muhammet.repository.entity.Musteri;
 import com.muhammet.repository.entity.Urun;
+import com.muhammet.service.MusteriService;
 import com.muhammet.utility.HibernateUtility;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -20,6 +21,28 @@ import java.util.List;
 
 public class EticaretApplication {
     public static void main(String[] args) {
+        MusteriService service = new MusteriService();
+        MusteriRepository musteriRepository = new MusteriRepository();
+        service.findByEntity(Musteri.builder().ad("a").soyad("A").build()).forEach(x->{
+            System.out.println("Müşteri...: "+ x.getAd()+" "+ x.getSoyad());
+        });
+
+//        musteriRepository.findAllByColumnNameAndValue("soyad","TEKİR").forEach(x->{
+//           System.out.println("Müşteri...: "+ x.getAd()+" "+ x.getSoyad());
+//        });
+
+//        musteriRepository.save(Musteri.builder()
+//                        .ad("Kenan")
+//                        .soyad("TEKİR")
+//                        .cinsiyet(ECinsiyet.ERKEK)
+//                .build());
+//        musteriRepository.findAll().forEach(x->{
+//            System.out.println("Müşteri...: "+ x.getAd()+" "+ x.getSoyad());
+//        });
+
+    }
+
+    private static void testmain(){
 
         CriteriaUsing cr = new CriteriaUsing();
         //cr.findAll();
@@ -40,7 +63,7 @@ public class EticaretApplication {
         //cr.namedQueryFindById(3l);
         //cr.namedQueryFindById(1000l);
         //cr.namedQueryGetCount();
-      //  cr.typedQuerySetProperties(1,3);
+        //  cr.typedQuerySetProperties(1,3);
         Musteri musteri = Musteri.builder()
                 .ad("Muhammet Ali")
                 .soyad("HOCA")
@@ -50,8 +73,8 @@ public class EticaretApplication {
         MusteriRepository musteriRepository = new MusteriRepository();
         musteriRepository.save(musteri);
         musteriRepository.findAllByColumnNameAndValue("ad","Muhammet");
-    }
 
+    }
     private static void criteriaList(){
         EntityManager entityManager = HibernateUtility.getSessionFactory().createEntityManager();
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
